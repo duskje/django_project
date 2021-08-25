@@ -1,7 +1,7 @@
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponse
 
 
 @login_required(login_url="/login/")
 def home(request):
-    return HttpResponse(f"Hello, {request.user.username}")
+    return render(request, "home.html", context={"request": request})

@@ -9,4 +9,5 @@ urlpatterns = [
         auth_views.LoginView.as_view(redirect_authenticated_user=True, success_url="/"),
     ),
     path("logout/", auth_views.LogoutView.as_view(next_page="/")),
+    path("register/", views.register),
 ]

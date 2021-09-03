@@ -4,6 +4,10 @@ from django.contrib.auth import get_user_model
 from django import forms
 
 
+class FlashcardReviewForm(forms.Form):
+    flashcard_ids = forms.HiddenInput()
+
+
 class RegisterForm(forms.Form):
     username = forms.CharField(label='Username:')
     email = forms.EmailField(label='Email:')

@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class Deck(models.Model):
@@ -11,6 +12,9 @@ class Deck(models.Model):
 
     title = models.CharField(max_length=200)
     last_seen_date = models.DateTimeField()
+
+    def get_absolute_url(self):
+        return reverse('deck-detail', kwargs={'pk': self.pk})
 
 
 class Flashcard(models.Model):
@@ -24,3 +28,6 @@ class Flashcard(models.Model):
 
     front_text = models.CharField(max_length=200)
     back_text = models.CharField(max_length=200)
+
+    def get_absolute_url(self):
+        return '/'

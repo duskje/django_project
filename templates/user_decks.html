@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Deck</title>
+    <title>{{ user.username }}'s decks</title>
 </head>
 <body>
-    <p>Hallo, {{ user.username }}</p>
+    <a href={% url 'deck-add' %}>Add a new deck</a>
+
+    <h1>Hallo, {{ user.username }}</h1>
+    <h1>Your decks</h1>
+
+    {% for deck in decks %}
+        <h2> Deck {{ forloop.counter }}</h2>
+
+        <div>
+            <a href="{{ deck.get_absolute_url }}">{{ deck.title }}</a>
+            <a href="{% url 'deck-update' pk=deck.pk %}">Update Deck</a>
+            <a href="{% url 'deck-delete' pk=deck.pk %}">Delete Deck</a>
+        </div>
+    {% endfor %}
 </body>
 </html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+    <a href={% url 'card-add' pk=deck.pk %}>Add a new card</a>
+    <a href={% url 'deck-review' pk=deck.pk %}>Review cards</a>
+    <a href={% url 'decks' %}>Go back</a>
+
+    {% for card in cards %}
+        <div>
+            <h1>Card {{ forloop.counter }}</h1>
+
+            <p>Front: {{ card.front_text }}</p>
+            <p>Back: {{ card.back_text }}</p>
+
+            <a href={% url 'card-update' pk=deck.pk card_pk=card.pk %}>Update card</a>
+            <a href={% url 'card-delete' pk=deck.pk card_pk=card.pk %}>Delete card</a>
+        </div>
+    {% endfor %}
+</body>
+</html>

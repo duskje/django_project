@@ -42,8 +42,6 @@ class RegisterForm(forms.Form):
 
         return username
 
-    # TODO: Implement def clean_email(self):
-
     def clean(self):
         password1 = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password_confirm')

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Card Deletion</title>
+</head>
+<body>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Are you sure?">
+</form>
+
+</body>
+</html>

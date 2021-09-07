@@ -4,6 +4,10 @@ from django.contrib.auth import get_user_model
 from django import forms
 
 
+class FlashcardReviewForm(forms.Form):
+    flashcard_ids = forms.HiddenInput()
+
+
 class RegisterForm(forms.Form):
     username = forms.CharField(label='Username:')
     email = forms.EmailField(label='Email:')
@@ -37,8 +41,6 @@ class RegisterForm(forms.Form):
             raise forms.ValidationError('Username or email already taken')
 
         return username
-
-    # TODO: Implement def clean_email(self):
 
     def clean(self):
         password1 = self.cleaned_data.get('password')

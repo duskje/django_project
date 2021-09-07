@@ -1,9 +1,9 @@
-from datetime import datetime
 import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, redirect
+from django.utils.timezone import datetime
 
 from django.views.generic import FormView, TemplateView, CreateView, UpdateView, DeleteView
 
@@ -27,7 +27,7 @@ def flashcards_review_view(request, pk):
         try:
             context['current_card'] = flashcards.pop()
         except IndexError:
-            ValueError('No cards')
+            raise ValueError('No cards')
 
         flashcard_ids = [flashcard.id for flashcard in flashcards]
         # context['flashcard_ids'] = flashcard_ids
